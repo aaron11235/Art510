@@ -126,8 +126,11 @@ function setup() {
     let x = 100;
     for (let input_name in input_to_0_1) {
         if (!input_to_0_1.hasOwnProperty(input_name)) continue;
-
-        text_boxes[input_name] = createSpan(input_name + ":")
+        let text = input_name;
+        if (text == 'velocity') {
+            text = 'volume';
+        }
+        text_boxes[input_name] = createSpan(text + ":")
         text_boxes[input_name].position(x, y);
         selectors[input_name] = createSelect();
         for (let output_name in _0_1_to_output) {

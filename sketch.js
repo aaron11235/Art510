@@ -123,7 +123,7 @@ function setup() {
     text_boxes = {}
     selectors = {}
     let y = 100;
-    let x = 100;
+    let x = 150;
     for (let input_name in input_to_0_1) {
         if (!input_to_0_1.hasOwnProperty(input_name)) continue;
         let text = input_name;
@@ -138,8 +138,8 @@ function setup() {
 
             selectors[input_name].option(output_name)
         }
-        selectors[input_name].position(x + 100, y);
-        y += 20;
+        selectors[input_name].position(x + 200, y);
+        y += 50;
     }
 
     start_button = createButton("start")

@@ -74,6 +74,7 @@ let sectors
 let max_height = 350
 //define canvas initial background brightness
 let background_lighness = .8
+let background_color = 1
 
 let min_spb
 let max_spb
@@ -92,6 +93,8 @@ function preload() {
 let text_boxes
 let selectors
 let start_button
+let selectors_2
+let 
 
 function setup() {
     createCanvas(1500, max_height*2)
@@ -122,8 +125,11 @@ function setup() {
 
     text_boxes = {}
     selectors = {}
+    text_boxes_2={"Background Color:"}
+    selectors_2 = {0, .2, .4, .6, .8, 1}
+  
     let y = 100;
-    let x = 150;
+    let x = 100;
     for (let input_name in input_to_0_1) {
         if (!input_to_0_1.hasOwnProperty(input_name)) continue;
         let text = input_name;
@@ -138,10 +144,22 @@ function setup() {
 
             selectors[input_name].option(output_name)
         }
-        selectors[input_name].position(x + 200, y);
+        selectors[input_name].position(x + 100, y);
         y += 50;
     }
-
+    for (i<text_boxes_2.length){
+        let text = text_boxes_2[i];
+        text_boxes_2[i] = createSpan(text)
+        text_boxes_2[i].position (x, y);
+        selectors_2[i] = createSelect();
+         for (let output_name in selectors_2) {
+            
+            selectors[i].option(output_name)
+        }
+        selectors[i].position(x + 100, y);
+        y += 50;
+    }
+    
     start_button = createButton("start")
     start_button.position(x, y)
     start_button.mouseClicked(() => {
@@ -185,7 +203,7 @@ function get_output(inputs, output_name) {
 }
 
 function draw() {
-    background(1, 0, background_lighness)
+    background(background_color, 0, background_lighness)
     if (!started) {
         return;
     }
